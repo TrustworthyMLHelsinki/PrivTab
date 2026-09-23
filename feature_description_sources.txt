@@ -1,0 +1,27 @@
+Feature description provenance for end_to_end_cases.py
+
+The feature descriptions used in the LLM prompts are not scraped at runtime.
+They were manually derived/transcribed from the public dataset documentation,
+public schemas, OpenML/HuggingFace/Kaggle/UCI metadata, and Richard's provided
+feature lists.
+
+Dataset sources:
+
+1. Bank Marketing
+   Source URL: https://www.openml.org/search?type=data&status=active&id=44234
+   Notes: Feature descriptions follow the public Bank Marketing/OpenML schema.
+
+2. Pima Indians Diabetes
+   Source URL: https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database
+   Notes: Feature descriptions follow the public Pima diabetes column names and
+   diagnostic-measure descriptions.
+
+3. COMPAS two-year recidivism
+   Source URL: https://www.kaggle.com/datasets/danofer/compass
+   Notes: Feature descriptions follow the public COMPAS/ProPublica-style schema
+   available through the dataset metadata and the selected feature list.
+
+4. Folktables ACS Income
+   Source URL: https://huggingface.co/datasets/birkhoffg/folktables-acs-income
+   Notes: Feature descriptions follow the public ACS/Folktables feature schema
+   and the selected ACS income feature list.

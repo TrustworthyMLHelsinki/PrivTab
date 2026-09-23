@@ -1,0 +1,37 @@
+{
+  "dataset": "Folktables ACS income >50K first 50000 rows",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "features": [
+    "AGEP",
+    "WKHP"
+  ],
+  "results": {
+    "AGEP": {
+      "feature": "AGEP",
+      "unit": "years",
+      "documented_lower_bound": 16,
+      "documented_upper_bound": null,
+      "documented_bound_status": "semantic_public_bound",
+      "suggested_lower_clip": 16,
+      "suggested_upper_clip": 90,
+      "suggested_clip_status": "chosen_clipping_bound",
+      "evidence": "Description states 'Person age in years' for the 'filtered ACS income population'. Public understanding of 'income population' in the US context implies a minimum working age.",
+      "guess_rationale": "Lower bound of 16 is a strong semantic bound for an 'income population' in the US, as it's a common minimum working age. Upper bound of 90 is chosen as a conservative clipping bound, as very few individuals are actively earning income beyond this age, and it's a common upper limit in demographic data.",
+      "confidence": "medium"
+    },
+    "WKHP": {
+      "feature": "WKHP",
+      "unit": "hours per week",
+      "documented_lower_bound": 0,
+      "documented_upper_bound": null,
+      "documented_bound_status": "semantic_public_bound",
+      "suggested_lower_clip": 0,
+      "suggested_upper_clip": 100,
+      "suggested_clip_status": "chosen_clipping_bound",
+      "evidence": "Description states 'Usual hours worked per week'. Hours worked cannot be negative.",
+      "guess_rationale": "Lower bound of 0 is a semantic minimum for hours worked. Upper bound of 100 is chosen as a conservative clipping bound, as working more than 100 'usual' hours per week is highly improbable and unsustainable.",
+      "confidence": "medium"
+    }
+  }
+}

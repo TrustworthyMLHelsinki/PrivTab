@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "privtab"
+version = "0.1.0"
+description = "Private tabular classification with reusable DP summaries"
+requires-python = ">=3.10"
+dependencies = ["torch>=2.6", "numpy>=1.26"]
+
+[project.optional-dependencies]
+experiments = ["scipy>=1.11", "scikit-learn>=1.4", "joblib>=1.3", "dp-accounting>=0.4", "PyYAML>=6", "xgboost>=2", "pandas>=2", "tqdm", "tabulate"]
+case-studies = ["openml", "ucimlrepo", "datasets"]
+bounds-refresh = ["google-genai", "transformers", "accelerate"]
+test = ["pytest>=8"]
+audits = ["scipy>=1.11", "matplotlib>=3.8"]
+
+[tool.setuptools.packages.find]
+include = ["privtab*", "deployment*", "experiments*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

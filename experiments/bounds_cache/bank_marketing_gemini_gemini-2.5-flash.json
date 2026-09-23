@@ -1,0 +1,107 @@
+{
+  "dataset": "Bank Marketing OpenML 44234",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "features": [
+    "age",
+    "balance",
+    "day",
+    "duration",
+    "campaign",
+    "pdays",
+    "previous"
+  ],
+  "results": {
+    "age": {
+      "feature": "age",
+      "unit": "years",
+      "documented_lower_bound": 18,
+      "documented_upper_bound": null,
+      "documented_bound_status": "semantic_public_bound",
+      "suggested_lower_clip": 18,
+      "suggested_upper_clip": 100,
+      "suggested_clip_status": "chosen_clipping_bound",
+      "evidence": "Age of the bank client, in years.",
+      "guess_rationale": "Bank clients are adults, so 18 is a semantic public lower bound. A 100 year upper clipping bound is conservative for human age.",
+      "confidence": "medium"
+    },
+    "balance": {
+      "feature": "balance",
+      "unit": "euros",
+      "documented_lower_bound": null,
+      "documented_upper_bound": null,
+      "documented_bound_status": "insufficient_information",
+      "suggested_lower_clip": -100000,
+      "suggested_upper_clip": 1000000,
+      "suggested_clip_status": "chosen_clipping_bound",
+      "evidence": "Average yearly balance, in euros.",
+      "guess_rationale": "Account balances can be negative due to overdrafts and can be large positive values. These bounds are conservative public clipping guesses, not empirical dataset extrema.",
+      "confidence": "low"
+    },
+    "day": {
+      "feature": "day",
+      "unit": "day of month",
+      "documented_lower_bound": 1,
+      "documented_upper_bound": 31,
+      "documented_bound_status": "exact_public_bound",
+      "suggested_lower_clip": 1,
+      "suggested_upper_clip": 31,
+      "suggested_clip_status": "exact_public_bound",
+      "evidence": "Last contact day of the month.",
+      "guess_rationale": "Calendar day of month is exactly bounded by 1 and 31.",
+      "confidence": "high"
+    },
+    "duration": {
+      "feature": "duration",
+      "unit": "seconds",
+      "documented_lower_bound": 0,
+      "documented_upper_bound": null,
+      "documented_bound_status": "semantic_public_bound",
+      "suggested_lower_clip": 0,
+      "suggested_upper_clip": 3600,
+      "suggested_clip_status": "chosen_clipping_bound",
+      "evidence": "Last contact duration, in seconds.",
+      "guess_rationale": "A call duration cannot be negative. One hour is a conservative clipping bound for a marketing phone contact.",
+      "confidence": "medium"
+    },
+    "campaign": {
+      "feature": "campaign",
+      "unit": "number of contacts",
+      "documented_lower_bound": 1,
+      "documented_upper_bound": null,
+      "documented_bound_status": "semantic_public_bound",
+      "suggested_lower_clip": 1,
+      "suggested_upper_clip": 50,
+      "suggested_clip_status": "chosen_clipping_bound",
+      "evidence": "Number of contacts performed during this campaign and for this client.",
+      "guess_rationale": "A contacted client has at least one campaign contact. Fifty contacts is a conservative practical clipping bound.",
+      "confidence": "medium"
+    },
+    "pdays": {
+      "feature": "pdays",
+      "unit": "days",
+      "documented_lower_bound": -1,
+      "documented_upper_bound": null,
+      "documented_bound_status": "documented_special_value",
+      "suggested_lower_clip": -1,
+      "suggested_upper_clip": 7300,
+      "suggested_clip_status": "chosen_clipping_bound",
+      "evidence": "Number of days since previous campaign contact; -1 means client was not previously contacted.",
+      "guess_rationale": "-1 is a documented special value. 7300 days is about 20 years and is a conservative clipping guess for elapsed days.",
+      "confidence": "medium"
+    },
+    "previous": {
+      "feature": "previous",
+      "unit": "number of contacts",
+      "documented_lower_bound": 0,
+      "documented_upper_bound": null,
+      "documented_bound_status": "semantic_public_bound",
+      "suggested_lower_clip": 0,
+      "suggested_upper_clip": 50,
+      "suggested_clip_status": "chosen_clipping_bound",
+      "evidence": "Number of contacts performed before this campaign and for this client.",
+      "guess_rationale": "A count of previous contacts cannot be negative. Fifty contacts is a conservative practical clipping bound.",
+      "confidence": "medium"
+    }
+  }
+}

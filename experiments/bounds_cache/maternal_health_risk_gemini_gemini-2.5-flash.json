@@ -1,0 +1,93 @@
+{
+  "dataset": "UCI Maternal Health Risk",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "features": [
+    "Age",
+    "SystolicBP",
+    "DiastolicBP",
+    "BS",
+    "BodyTemp",
+    "HeartRate"
+  ],
+  "results": {
+    "Age": {
+      "feature": "Age",
+      "unit": "years",
+      "documented_lower_bound": null,
+      "documented_upper_bound": null,
+      "documented_bound_status": "insufficient_information",
+      "suggested_lower_clip": 10,
+      "suggested_upper_clip": 60,
+      "suggested_clip_status": "semantic_public_bound",
+      "evidence": "Age in years when a woman is pregnant. Dataset context: age is maternal age in years.",
+      "guess_rationale": "Maternal age implies a biologically plausible range for human pregnancy. A lower bound of 10 years accounts for early puberty, and an upper bound of 60 years covers late pregnancies, both natural and assisted, while remaining conservative.",
+      "confidence": "medium"
+    },
+    "SystolicBP": {
+      "feature": "SystolicBP",
+      "unit": "mm Hg",
+      "documented_lower_bound": null,
+      "documented_upper_bound": null,
+      "documented_bound_status": "insufficient_information",
+      "suggested_lower_clip": 70,
+      "suggested_upper_clip": 250,
+      "suggested_clip_status": "semantic_public_bound",
+      "evidence": "Upper value of blood pressure during pregnancy. Dataset context: systolic and diastolic blood pressure are measured in mm Hg.",
+      "guess_rationale": "Blood pressure values must be positive. A lower bound of 70 mm Hg is a critically low but survivable systolic pressure. An upper bound of 250 mm Hg covers extremely high, but still physiologically possible, systolic pressures.",
+      "confidence": "medium"
+    },
+    "DiastolicBP": {
+      "feature": "DiastolicBP",
+      "unit": "mm Hg",
+      "documented_lower_bound": null,
+      "documented_upper_bound": null,
+      "documented_bound_status": "insufficient_information",
+      "suggested_lower_clip": 40,
+      "suggested_upper_clip": 150,
+      "suggested_clip_status": "semantic_public_bound",
+      "evidence": "Lower value of blood pressure during pregnancy. Dataset context: systolic and diastolic blood pressure are measured in mm Hg.",
+      "guess_rationale": "Blood pressure values must be positive. A lower bound of 40 mm Hg is a critically low but survivable diastolic pressure. An upper bound of 150 mm Hg covers extremely high, but still physiologically possible, diastolic pressures.",
+      "confidence": "medium"
+    },
+    "BS": {
+      "feature": "BS",
+      "unit": "mmol/L",
+      "documented_lower_bound": 0,
+      "documented_upper_bound": null,
+      "documented_bound_status": "semantic_public_bound",
+      "suggested_lower_clip": 0,
+      "suggested_upper_clip": 40,
+      "suggested_clip_status": "semantic_public_bound",
+      "evidence": "Blood glucose level in molar concentration. Dataset context: blood glucose is measured in mmol/L and is non-negative.",
+      "guess_rationale": "The dataset context explicitly states blood glucose is non-negative, setting the lower bound at 0. An upper bound of 40 mmol/L is chosen to encompass extremely high, but still physiologically observed, glucose levels in severe hyperglycemia.",
+      "confidence": "medium"
+    },
+    "BodyTemp": {
+      "feature": "BodyTemp",
+      "unit": "F",
+      "documented_lower_bound": null,
+      "documented_upper_bound": null,
+      "documented_bound_status": "insufficient_information",
+      "suggested_lower_clip": 80,
+      "suggested_upper_clip": 110,
+      "suggested_clip_status": "semantic_public_bound",
+      "evidence": "Body temperature. Dataset context: body temperature is measured in degrees Fahrenheit.",
+      "guess_rationale": "Human body temperature has a critical range for survival. A lower bound of 80 F accounts for severe hypothermia, and an upper bound of 110 F covers extreme hyperthermia, both representing the limits of human survival.",
+      "confidence": "medium"
+    },
+    "HeartRate": {
+      "feature": "HeartRate",
+      "unit": "beats per minute",
+      "documented_lower_bound": 0,
+      "documented_upper_bound": null,
+      "documented_bound_status": "semantic_public_bound",
+      "suggested_lower_clip": 0,
+      "suggested_upper_clip": 250,
+      "suggested_clip_status": "semantic_public_bound",
+      "evidence": "Heart rate. Dataset context: heart rate is beats per minute and non-negative.",
+      "guess_rationale": "The dataset context explicitly states heart rate is non-negative, setting the lower bound at 0. An upper bound of 250 beats per minute is chosen to encompass extremely high, but still physiologically observed, heart rates during intense exertion or medical conditions.",
+      "confidence": "medium"
+    }
+  }
+}

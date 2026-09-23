@@ -1,0 +1,37 @@
+{
+  "dataset": "UCI Student Performance Portuguese pass/fail",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "features": [
+    "age",
+    "absences"
+  ],
+  "results": {
+    "age": {
+      "feature": "age",
+      "unit": "years",
+      "documented_lower_bound": 15,
+      "documented_upper_bound": 22,
+      "documented_bound_status": "exact_public_bound",
+      "suggested_lower_clip": 15,
+      "suggested_upper_clip": 22,
+      "suggested_clip_status": "exact_public_bound",
+      "evidence": "The UCI dataset description for 'age' explicitly states the range from 15 to 22 years for students.",
+      "guess_rationale": "The documented bounds are exact and cover the expected range for students in this context, so they are used directly for clipping.",
+      "confidence": "high"
+    },
+    "absences": {
+      "feature": "absences",
+      "unit": "count",
+      "documented_lower_bound": 0,
+      "documented_upper_bound": null,
+      "documented_bound_status": "semantic_public_bound",
+      "suggested_lower_clip": 0,
+      "suggested_upper_clip": 100,
+      "suggested_clip_status": "chosen_clipping_bound",
+      "evidence": "The description 'Number of school absences' implies a non-negative count, hence a lower bound of 0. No explicit upper bound is provided in the dataset context or description.",
+      "guess_rationale": "The lower bound of 0 is a semantic public bound for counts. For the upper bound, without explicit documentation, a value of 100 is chosen as a conservative clipping bound. This value is significantly higher than typical absence counts and aims to capture most plausible data while clipping extreme outliers, assuming a standard school year duration.",
+      "confidence": "medium"
+    }
+  }
+}

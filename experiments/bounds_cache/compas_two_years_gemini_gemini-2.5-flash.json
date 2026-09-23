@@ -1,0 +1,79 @@
+{
+  "dataset": "COMPAS two-year recidivism",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "features": [
+    "age",
+    "juv_fel_count",
+    "juv_misd_count",
+    "juv_other_count",
+    "priors_count"
+  ],
+  "results": {
+    "age": {
+      "feature": "age",
+      "unit": "years",
+      "documented_lower_bound": 18,
+      "documented_upper_bound": null,
+      "documented_bound_status": "semantic_public_bound",
+      "suggested_lower_clip": 18,
+      "suggested_upper_clip": 100,
+      "suggested_clip_status": "semantic_public_bound",
+      "evidence": "Dataset context states 'age is adult age in years'. Standard adult age is 18.",
+      "guess_rationale": "No explicit upper bound for age. 100 is a conservative upper bound for human age in years, covering most of the population.",
+      "confidence": "medium"
+    },
+    "juv_fel_count": {
+      "feature": "juv_fel_count",
+      "unit": "count",
+      "documented_lower_bound": 0,
+      "documented_upper_bound": null,
+      "documented_bound_status": "semantic_public_bound",
+      "suggested_lower_clip": 0,
+      "suggested_upper_clip": 10,
+      "suggested_clip_status": "semantic_public_bound",
+      "evidence": "Dataset context states 'juvenile counts... are non-negative integer counts'.",
+      "guess_rationale": "No explicit upper bound for juvenile felony counts. 10 is chosen as a conservative upper bound, as very high counts are rare and likely outliers.",
+      "confidence": "medium"
+    },
+    "juv_misd_count": {
+      "feature": "juv_misd_count",
+      "unit": "count",
+      "documented_lower_bound": 0,
+      "documented_upper_bound": null,
+      "documented_bound_status": "semantic_public_bound",
+      "suggested_lower_clip": 0,
+      "suggested_upper_clip": 10,
+      "suggested_clip_status": "semantic_public_bound",
+      "evidence": "Dataset context states 'juvenile counts... are non-negative integer counts'.",
+      "guess_rationale": "No explicit upper bound for juvenile misdemeanor counts. 10 is chosen as a conservative upper bound, as very high counts are rare and likely outliers.",
+      "confidence": "medium"
+    },
+    "juv_other_count": {
+      "feature": "juv_other_count",
+      "unit": "count",
+      "documented_lower_bound": 0,
+      "documented_upper_bound": null,
+      "documented_bound_status": "semantic_public_bound",
+      "suggested_lower_clip": 0,
+      "suggested_upper_clip": 10,
+      "suggested_clip_status": "semantic_public_bound",
+      "evidence": "Dataset context states 'juvenile counts... are non-negative integer counts'.",
+      "guess_rationale": "No explicit upper bound for other juvenile counts. 10 is chosen as a conservative upper bound, as very high counts are rare and likely outliers.",
+      "confidence": "medium"
+    },
+    "priors_count": {
+      "feature": "priors_count",
+      "unit": "count",
+      "documented_lower_bound": 0,
+      "documented_upper_bound": null,
+      "documented_bound_status": "semantic_public_bound",
+      "suggested_lower_clip": 0,
+      "suggested_upper_clip": 50,
+      "suggested_clip_status": "semantic_public_bound",
+      "evidence": "Dataset context states 'prior offense counts are non-negative integer counts'.",
+      "guess_rationale": "No explicit upper bound for prior offense counts. 50 is chosen as a conservative upper bound, acknowledging that prior offenses can accumulate over an adult lifetime, but very high counts are rare.",
+      "confidence": "medium"
+    }
+  }
+}

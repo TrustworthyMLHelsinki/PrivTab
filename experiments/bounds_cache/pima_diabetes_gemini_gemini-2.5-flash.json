@@ -1,0 +1,121 @@
+{
+  "dataset": "Pima Indians Diabetes",
+  "provider": "gemini",
+  "model": "gemini-2.5-flash",
+  "features": [
+    "preg",
+    "plas",
+    "pres",
+    "skin",
+    "insu",
+    "mass",
+    "pedi",
+    "age"
+  ],
+  "results": {
+    "preg": {
+      "feature": "preg",
+      "unit": "pregnancies",
+      "documented_lower_bound": 0,
+      "documented_upper_bound": null,
+      "documented_bound_status": "semantic_public_bound",
+      "suggested_lower_clip": 0,
+      "suggested_upper_clip": 17,
+      "suggested_clip_status": "chosen_clipping_bound",
+      "evidence": "Dataset context states 'pregnancies... are non-negative'. Public medical knowledge implies a finite, non-negative number of pregnancies.",
+      "guess_rationale": "While the lower bound of 0 is semantically clear, no explicit upper bound is given. A value of 17 is chosen as a conservative upper clip, representing a very high but medically plausible number of pregnancies over a lifetime, to prevent extreme outliers from dominating privacy budget.",
+      "confidence": "medium"
+    },
+    "plas": {
+      "feature": "plas",
+      "unit": "mg/dL",
+      "documented_lower_bound": 0,
+      "documented_upper_bound": null,
+      "documented_bound_status": "semantic_public_bound",
+      "suggested_lower_clip": 40,
+      "suggested_upper_clip": 400,
+      "suggested_clip_status": "chosen_clipping_bound",
+      "evidence": "Dataset context states 'glucose... are non-negative'. Public medical knowledge indicates plasma glucose concentration must be positive in a living person. Typical fasting glucose is 70-100 mg/dL, and severe hypoglycemia is below 50 mg/dL. Extremely high levels can exceed 600 mg/dL.",
+      "guess_rationale": "While non-negative is stated, a physiological lower bound of 40 mg/dL is chosen as a more realistic minimum for a living person. No explicit upper bound is given. An upper clip of 400 mg/dL is chosen to cover a wide range of glucose levels, including severe hyperglycemia, while clipping extreme, potentially erroneous, or highly rare values.",
+      "confidence": "medium"
+    },
+    "pres": {
+      "feature": "pres",
+      "unit": "mmHg",
+      "documented_lower_bound": 0,
+      "documented_upper_bound": null,
+      "documented_bound_status": "semantic_public_bound",
+      "suggested_lower_clip": 30,
+      "suggested_upper_clip": 130,
+      "suggested_clip_status": "chosen_clipping_bound",
+      "evidence": "Dataset context states 'blood pressure... are non-negative'. Public medical knowledge indicates diastolic blood pressure must be positive in a living person. Severe hypotension can be below 40 mmHg, and severe hypertension can exceed 120 mmHg.",
+      "guess_rationale": "While non-negative is stated, a physiological lower bound of 30 mmHg is chosen as a more realistic minimum for a living person. No explicit upper bound is given. An upper clip of 130 mmHg is chosen to cover a wide range of diastolic blood pressure, including severe hypertension, while clipping extreme or highly rare values.",
+      "confidence": "medium"
+    },
+    "skin": {
+      "feature": "skin",
+      "unit": "mm",
+      "documented_lower_bound": 0,
+      "documented_upper_bound": null,
+      "documented_bound_status": "semantic_public_bound",
+      "suggested_lower_clip": 5,
+      "suggested_upper_clip": 80,
+      "suggested_clip_status": "chosen_clipping_bound",
+      "evidence": "Dataset context states 'skin thickness... are non-negative'. Public medical knowledge indicates skin fold thickness must be positive. Typical adult values range from 10-50 mm, but can be higher in obesity.",
+      "guess_rationale": "While non-negative is stated, a physiological lower bound of 5 mm is chosen as a more realistic minimum for a living person. No explicit upper bound is given. An upper clip of 80 mm is chosen to cover a wide range of skin fold thickness, including values for obese individuals, while clipping extreme or highly rare values.",
+      "confidence": "medium"
+    },
+    "insu": {
+      "feature": "insu",
+      "unit": "mu U/ml",
+      "documented_lower_bound": 0,
+      "documented_upper_bound": null,
+      "documented_bound_status": "semantic_public_bound",
+      "suggested_lower_clip": 10,
+      "suggested_upper_clip": 500,
+      "suggested_clip_status": "chosen_clipping_bound",
+      "evidence": "Dataset context states 'insulin... are non-negative'. Public medical knowledge indicates serum insulin must be positive in a living person. Fasting insulin is typically 2-25 mu U/ml, and post-glucose levels can be significantly higher, especially with insulin resistance.",
+      "guess_rationale": "While non-negative is stated, a physiological lower bound of 10 mu U/ml is chosen as a more realistic minimum for a living person, considering 2-hour post-glucose levels. No explicit upper bound is given. An upper clip of 500 mu U/ml is chosen to cover a wide range of insulin levels, including those indicative of insulin resistance, while clipping extreme or highly rare values.",
+      "confidence": "medium"
+    },
+    "mass": {
+      "feature": "mass",
+      "unit": "kg/m^2",
+      "documented_lower_bound": 0,
+      "documented_upper_bound": null,
+      "documented_bound_status": "semantic_public_bound",
+      "suggested_lower_clip": 10,
+      "suggested_upper_clip": 70,
+      "suggested_clip_status": "chosen_clipping_bound",
+      "evidence": "Dataset context states 'BMI... are non-negative'. Public medical knowledge indicates BMI must be positive in a living person. Severe underweight is typically below 15 kg/m^2, and extreme obesity can exceed 60 kg/m^2.",
+      "guess_rationale": "While non-negative is stated, a physiological lower bound of 10 kg/m^2 is chosen as a more realistic minimum for a living person. No explicit upper bound is given. An upper clip of 70 kg/m^2 is chosen to cover a wide range of BMI values, including extreme obesity, while clipping extreme or highly rare values.",
+      "confidence": "medium"
+    },
+    "pedi": {
+      "feature": "pedi",
+      "unit": null,
+      "documented_lower_bound": 0,
+      "documented_upper_bound": null,
+      "documented_bound_status": "semantic_public_bound",
+      "suggested_lower_clip": 0,
+      "suggested_upper_clip": 3,
+      "suggested_clip_status": "chosen_clipping_bound",
+      "evidence": "Dataset context states 'diabetes pedigree function... are non-negative'. This function quantifies genetic influence, implying a non-negative value.",
+      "guess_rationale": "While non-negative is stated, no explicit upper bound is given for the Diabetes Pedigree Function. A value of 3.0 is chosen as a conservative upper clip, based on typical observed ranges for such functions, to capture most meaningful variations while clipping extreme or potentially erroneous values.",
+      "confidence": "medium"
+    },
+    "age": {
+      "feature": "age",
+      "unit": "years",
+      "documented_lower_bound": 18,
+      "documented_upper_bound": null,
+      "documented_bound_status": "semantic_public_bound",
+      "suggested_lower_clip": 18,
+      "suggested_upper_clip": 100,
+      "suggested_clip_status": "chosen_clipping_bound",
+      "evidence": "Dataset context states 'age... are non-negative; age is adult age in years'. Public knowledge defines adult age as 18 years or older. Maximum human lifespan is around 122 years.",
+      "guess_rationale": "The lower bound of 18 years is semantically clear from 'adult age'. No explicit upper bound is given. An upper clip of 100 years is chosen as a conservative upper bound, covering nearly all adult ages in a typical population while clipping extreme outliers or potential data entry errors.",
+      "confidence": "medium"
+    }
+  }
+}

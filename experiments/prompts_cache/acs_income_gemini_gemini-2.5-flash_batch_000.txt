@@ -1,0 +1,63 @@
+SYSTEM:
+You are extracting PUBLIC clipping bounds for differentially private preprocessing.
+
+Return strict JSON only.
+Do not include markdown.
+Do not include explanations outside JSON.
+
+USER:
+Rules:
+1. Analyze each target column independently.
+2. Do NOT claim exact bounds unless they are explicit or follow from definitions.
+3. Do NOT use empirical min/max values unless explicitly provided in the public description.
+4. If true documented bounds are unavailable, you MUST still provide finite suggested clipping bounds.
+5. The suggested clipping bounds must be conservative and based on public semantics, units, and dataset context.
+6. Clearly distinguish documented bounds from guessed clipping bounds.
+7. Use null for documented bounds that are not justified.
+8. Always explain the evidence and the guess rationale.
+9. Return one JSON object per target column.
+10. Do not include columns that were not provided.
+11. If a public semantic lower bound is clear, include it even when the upper bound is not documented.
+12. All suggested clipping bounds must be finite numeric values.
+13. Do not omit a target column. If uncertain, use documented_bound_status="insufficient_information" and suggested_clip_status="chosen_clipping_bound".
+14. The top-level JSON value must be an array, not an object wrapper.
+15. Use the dataset-specific guidance in the Dataset context when it defines units,
+    special values, or semantic lower/upper bounds.
+
+Bound evidence statuses:
+- exact_public_bound: exact range follows from definition or description, e.g. day of month = 1..31.
+- documented_special_value: special value is documented.
+- semantic_public_bound: public semantics strongly imply the bound.
+- insufficient_information: description does not justify a documented numeric bound.
+
+Return strict JSON only as an array:
+
+[
+  {
+    "feature": string,
+    "unit": string | null,
+
+    "documented_lower_bound": number | null,
+    "documented_upper_bound": number | null,
+    "documented_bound_status": "exact_public_bound" | "documented_special_value" | "semantic_public_bound" | "insufficient_information",
+
+    "suggested_lower_clip": number,
+    "suggested_upper_clip": number,
+    "suggested_clip_status": "exact_public_bound" | "semantic_public_bound" | "chosen_clipping_bound",
+
+    "evidence": string,
+    "guess_rationale": string,
+    "confidence": "low" | "medium" | "high"
+  }
+]
+
+Dataset context:
+Folktables ACS income dataset from HuggingFace. The task is binary prediction of whether personal income PINCP is greater than 50,000 USD. Features follow ACS/PUMS public-use definitions. Coded categorical features and dataset category sets are handled outside the LLM call. Numeric guidance: AGEP is age in years for the filtered ACS income population; WKHP is usual hours worked per week.
+
+Target columns:
+1. name: AGEP
+   description: Numeric. Person age in years.
+   unit: years
+2. name: WKHP
+   description: Numeric. Usual hours worked per week.
+   unit: hours per week

@@ -1694,9 +1694,9 @@ def encode_case_study_features(
                 )
             x_columns.append(encoded.to_numpy(dtype=np.float32))
         else:
+            if series.isna().any():
+                raise ValueError(f"Column {column_name} contains missing numeric values.")
             numeric = series.astype(np.float32)
-            if numeric.isna().any():
-                numeric = numeric.fillna(float(numeric.median()))
             x_columns.append(numeric.to_numpy(dtype=np.float32))
 
     return np.stack(x_columns, axis=1).astype(np.float32)
@@ -1862,9 +1862,9 @@ def load_bank_marketing_openml_dataset(
             encoded = series.astype(str).map(category_to_code).fillna(-1.0)
             x_columns.append(encoded.to_numpy(dtype=np.float32))
         else:
+            if series.isna().any():
+                raise ValueError(f"Column {column_name} contains missing numeric values.")
             numeric = series.astype(np.float32)
-            if numeric.isna().any():
-                numeric = numeric.fillna(float(numeric.median()))
             x_columns.append(numeric.to_numpy(dtype=np.float32))
 
     x = np.stack(x_columns, axis=1).astype(np.float32)

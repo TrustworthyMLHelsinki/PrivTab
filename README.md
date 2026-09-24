@@ -8,8 +8,11 @@ For layer descriptions and the private summary boundary, see the [architecture g
 
 ## Install
 
-Python 3.10+ and PyTorch 2.6+ are required. From this directory:
-
+Python 3.10+ and PyTorch 2.6+ are required. Make sure you first run:
+```bash
+pip install --upgrade pip setuptools wheel
+```
+Then from this directory:
 ```bash
 pip install -e .                         # model and deployment only
 pip install -e '.[experiments,test]'     # training, benchmarks, tests

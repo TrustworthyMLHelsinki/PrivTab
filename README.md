@@ -8,7 +8,7 @@ For layer descriptions and the private summary boundary, see the [architecture g
 
 ## Install
 
-Python 3.10+ and PyTorch 2.6+ are required. Make sure you first run:
+Python 3.11+ and PyTorch 2.6+ are required. Make sure you first run:
 ```bash
 pip install --upgrade pip setuptools wheel
 ```
